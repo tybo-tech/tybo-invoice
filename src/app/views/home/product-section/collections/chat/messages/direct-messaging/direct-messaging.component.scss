@@ -1,0 +1,13 @@
+@import '../../../../../../../../assets/styles/color';
+
+.direct-messages{
+    background: $white;
+    margin: 4em auto;
+    max-width: 75em;
+    height: 75vh;
+    display: grid;
+    grid-template-columns: 30% auto;
+    .col{
+        overflow-y: scroll;
+    }
+}

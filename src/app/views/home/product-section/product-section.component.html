@@ -1,0 +1,54 @@
+<div class="main-products">
+  <app-intro *ngIf="!user || !user.CompanyId"></app-intro>
+  <!-- <div class="sell phone-only" *ngIf="!user || !user.CompanyId">
+    <p>
+      Welcome to Tybo Fashion, <b> discover, buy and sell
+      fashion.</b>
+    </p>
+    <button class="primary" (click)="sell()">Sell on Tybo Fashion</button>
+  </div> -->
+  <div class="global-tabs phone-only">
+    <div class="tab" *ngFor="let item of TABS" [ngClass]="item.Classes" (click)="tab(item)">{{item.Name}}</div>
+  </div>
+
+
+  <app-on-sale *ngIf="currentTab.Name === TABS[0].Name || currentTab.Name === TABS[1].Name"></app-on-sale>
+  <app-shop-by-catergory *ngIf="currentTab.Name === TABS[0].Name && ladiesCategory"
+    [parentId]="ladiesCategory.CategoryId" [label]="currentTab.Name">
+  </app-shop-by-catergory>
+
+  <app-shop-by-catergory *ngIf="currentTab.Name === TABS[1].Name && menCategory" [parentId]="menCategory.CategoryId"
+    [label]="menCategory.Name"></app-shop-by-catergory>
+
+  <app-featured *ngIf="currentTab.Name === TABS[0].Name && ladiesCategory" [products]="pickedProducts"
+    [label]="currentTab.Name"></app-featured>
+
+
+  <app-shop-by-gender *ngIf="currentTab.Name === TABS[0].Name && ladiesProducts" [products]="ladiesProducts"
+    [label]="currentTab.Name"></app-shop-by-gender>
+
+  <app-shop-by-gender *ngIf="currentTab.Name === TABS[1].Name && mensProducts" [products]="mensProducts"
+    [label]="currentTab.Name"></app-shop-by-gender>
+
+  <app-all-shops *ngIf="currentTab.Name === TABS[2].Name"></app-all-shops>
+
+
+
+  <div class="next">
+    <button class="primary load-more"
+      *ngIf="showShowMore && (currentTab.Name === TABS[0].Name || currentTab.Name === TABS[1].Name)"
+      (click)="loadMore()">Load more</button>
+  </div>
+
+
+
+
+
+</div>
+
+
+<app-product-quick-view *ngIf="selectedProduct" [selectedProduct]="selectedProduct"
+  (showProduct)="selectedProduct = null"></app-product-quick-view>
+
+  <app-quick-sign-in [heading]="heading" [isLoggingIn]="isLoggingIn"></app-quick-sign-in>
+

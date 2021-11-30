@@ -1,0 +1,12 @@
+<div class="direct-messages">
+  <div class="col">
+    <div class="chats">
+      <div class="chat"  *ngFor="let item of interactions" (click)="select(item)">
+        item
+      </div>
+    </div>
+  </div>
+  <div class="col"></div>
+</div>
+
+<app-chat></app-chat>
